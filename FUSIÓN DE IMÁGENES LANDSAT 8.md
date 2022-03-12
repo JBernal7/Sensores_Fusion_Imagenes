@@ -17,7 +17,7 @@ Jessica Bernal Borrego
 ##### Cargamos las bandas que vamos a utilizar: las 7 bandas multiespectrales (bandas B1-B7) y la banda pancromática (B8) del satélite Landsat 8 (Colección 2, nivel 1).
 
  
-![](https://codimd.s3.shivering-isles.com/demo/uploads/55c84c826662ee144f2d26f13.png)
+![image](https://user-images.githubusercontent.com/100314590/158029689-ca337aec-952a-4cf5-b763-5a860f4a7429.png)
 
 
 
@@ -27,20 +27,18 @@ Jessica Bernal Borrego
 ##### Para este paso utilizamos la calculadora ráster (*Ráster → Calculadora ráster*), indicando en la extensión de la capa seleccionada el número de columnas y filas de la capa de salida, de forma que este coincida con la capa B8. En este caso, nuestra capa B8 contiene 15621 columnas y 15881 filas.
  
 
-![](https://codimd.s3.shivering-isles.com/demo/uploads/55c84c826662ee144f2d26f14.png)
+![image](https://user-images.githubusercontent.com/100314590/158029705-93835de6-ac58-4b42-b41c-9864e62940b1.png)
 
 
 ### 3. Comprobación
 ##### Comprobamos (1) que los resultados son los esperados, 
-
- ![](https://codimd.s3.shivering-isles.com/demo/uploads/55c84c826662ee144f2d26f15.png)
-
- ![](https://codimd.s3.shivering-isles.com/demo/uploads/55c84c826662ee144f2d26f16.png)
+![image](https://user-images.githubusercontent.com/100314590/158029714-ae806b40-cae8-462e-9981-0cbf35e4fed6.png)
+![image](https://user-images.githubusercontent.com/100314590/158029721-c9f3453b-03d2-4b94-a9e0-efbb0e88bd4d.png)
 
 
 ##### Y (2) que no existe desplazamiento de las imágenes remuestreadas respecto a la pancromática. Para ello simplemente tomamos unos puntos de referencia en la pancromática y vamos superponiendo las multiespectrales remuestradas.
 
- ![](https://codimd.s3.shivering-isles.com/demo/uploads/55c84c826662ee144f2d26f17.png)
+![image](https://user-images.githubusercontent.com/100314590/158029724-97b21fb7-4566-47d5-a21e-7443c5d77787.png)
 
 
  
@@ -124,24 +122,23 @@ Band 1 Block=256x256 Type=UInt16, ColorInterp=Gray
 ##### Para igualar el histograma de imagen pancromática con los histogramas de las distintas bandas de la multiespectral se utiliza la siguiente expresión:
 
 
-> ![](https://codimd.s3.shivering-isles.com/demo/uploads/55c84c826662ee144f2d26f18.png)
+> ![image](https://user-images.githubusercontent.com/100314590/158029732-17f30522-16c0-45a5-948e-fc127f45f676.png)
 
 
 ###### Donde, 
 
-> ![](https://codimd.s3.shivering-isles.com/demo/uploads/55c84c826662ee144f2d26f19.png)
+> ![image](https://user-images.githubusercontent.com/100314590/158029737-b91b0216-fb09-4cbe-b823-8a5ff0586953.png)
 
 
 ##### Por tanto, apoyándonos en una hoja de cálculo, calculamos los coeficientes a y b a partir de la media y desviación típica de cada banda:
 
- ![](https://codimd.s3.shivering-isles.com/demo/uploads/55c84c826662ee144f2d26f1a.png)
+![image](https://user-images.githubusercontent.com/100314590/158029740-3dffc02b-6723-4766-bf31-ae3f44d891f3.png)
 
 
 
 ##### Y procedemos al matcheado de las imágenes (*Ráster --> Calculadora ráster*). 
 
-
- ![](https://codimd.s3.shivering-isles.com/demo/uploads/55c84c826662ee144f2d26f1b.png)
+![image](https://user-images.githubusercontent.com/100314590/158029746-db843342-6af4-47e3-a3c6-69fbab7cba70.png)
 
 
 
@@ -172,37 +169,37 @@ Metadata:
 ### 5. Filtro de paso bajo 
 ##### En el siguiente paso aplicamos una transformación lineal de los datos para maximizar el detalle de la información. Conviene usar el filtro cuya forma se adecúe mejor al tipo de señal con la que se trabaja, en nuestro caso utilizamos un filtro wavelet de nivel 1, dado que el ratio de cambio de las imágenes es 2:1 (de 30 m se pasa a 15 m).
 
-> ![](https://codimd.s3.shivering-isles.com/demo/uploads/55c84c826662ee144f2d26f1c.png)
+> ![image](https://user-images.githubusercontent.com/100314590/158029758-6cde8846-3aed-4fd3-9334-db43225ab826.png)
 
 
 ##### En nuestro ejercicio el filtro suavizado de primer nivel (2:1) es el siguiente: 
 
- ![](https://codimd.s3.shivering-isles.com/demo/uploads/55c84c826662ee144f2d26f1d.png)
+![image](https://user-images.githubusercontent.com/100314590/158029760-54d06efd-6a92-4389-bb1f-856509c82a75.png)
 
 
 ##### Ejecutamos esta operación a través de la herramienta *r.mfilter* de GRASS:
  
-![](https://codimd.s3.shivering-isles.com/demo/uploads/55c84c826662ee144f2d26f1e.png)
+![image](https://user-images.githubusercontent.com/100314590/158029765-93d27988-dea4-4f15-8cfc-ae605d23d3ff.png)
 
  
-![](https://codimd.s3.shivering-isles.com/demo/uploads/55c84c826662ee144f2d26f1f.png)
+![image](https://user-images.githubusercontent.com/100314590/158029769-6114325e-3d85-4fb7-8327-fe5afae171c5.png)
 
-![](https://codimd.s3.shivering-isles.com/demo/uploads/55c84c826662ee144f2d26f20.png)
+![image](https://user-images.githubusercontent.com/100314590/158029773-78f9f95c-b4cd-4556-b787-a75d2d1ce0ac.png)
 
   
 ###### Pancromática Matcheada (izq) y Pancromática Filtrada (der)
 
 
 ##### A continuación, restamos los valores obtenidos (imagen pancromática filtrada) a la imagen original (pancromática matcheada), obteniendo así el detalle de cada banda.
-> ![](https://codimd.s3.shivering-isles.com/demo/uploads/55c84c826662ee144f2d26f21.png)
+> ![image](https://user-images.githubusercontent.com/100314590/158029776-0773829d-a37f-4bdf-9ac1-a5ead22fba06.png)
 
-![](https://codimd.s3.shivering-isles.com/demo/uploads/55c84c826662ee144f2d26f22.png)
+![image](https://user-images.githubusercontent.com/100314590/158029777-be2b2a90-bf22-43a3-a4e8-81834b8b9e25.png)
 
- ![](https://codimd.s3.shivering-isles.com/demo/uploads/55c84c826662ee144f2d26f23.png)
+![image](https://user-images.githubusercontent.com/100314590/158029781-bcc05ac5-500e-4d2c-8550-7d836bd59e7c.png)
 
 ###### Pancromática Matcheada (izq) y Pancromática Detalle (der)
 
-![](https://codimd.s3.shivering-isles.com/demo/uploads/55c84c826662ee144f2d26f24.png)
+![image](https://user-images.githubusercontent.com/100314590/158029788-ee8afe27-eb26-4b55-94a1-37975ea3518e.png)
 
   
 ###### Pancromática Matcheada (izq) y Pancromática Detalle (der) con zoom.
@@ -239,21 +236,21 @@ STATISTICS_MEAN=-0.0074951656319066
 ##### Y ahora sí, procedemos a obtener la imagen fusionada sumando el detalle obtenido de la imagen pancromática matcheada a la imagen multiespectral remuestreada.
 
 
-> ![](https://codimd.s3.shivering-isles.com/demo/uploads/55c84c826662ee144f2d26f25.png)
+> ![image](https://user-images.githubusercontent.com/100314590/158029797-15c23be9-eaca-4271-8dcc-1cdca878fe9b.png)
 
 
-![](https://codimd.s3.shivering-isles.com/demo/uploads/55c84c826662ee144f2d26f26.png)
+![image](https://user-images.githubusercontent.com/100314590/158029799-4221eb45-3e6e-4873-9760-1b4c860eab7a.png)
 
  
 
 ### 6. Resultado
 ##### Construimos dos ráster virtuales para comparar el grado de detalle que la imagen fusionada incluye a la imagen multiespectral. Este detalle es el equivalente al que ofrece la imagen pancromática, que se encuentra con un tamaño de píxel de 15 m.
 
-![](https://codimd.s3.shivering-isles.com/demo/uploads/55c84c826662ee144f2d26f27.png)
+![image](https://user-images.githubusercontent.com/100314590/158029808-1e11e0ce-0cee-4219-9238-e221909f5660.png)
 
  
 ###### Imagen multiespectral de origen
 
-![](https://codimd.s3.shivering-isles.com/demo/uploads/55c84c826662ee144f2d26f28.png)
+![image](https://user-images.githubusercontent.com/100314590/158029814-d80d7b89-d8cc-46c6-99e0-9ed9438c2e2f.png)
 
 ###### Imagen multiespectral fusionada
